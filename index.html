@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+<meta charset="utf-8" /> 
+{% block content %}
+	<form action="/search/" method="post">
+	{% csrf_token %}
+	<input type="text" name="search" autofocus>
+	<input type="submit" value="search">
+<p>{{ rlt }}</p>
+    <li id="Home"><a href="">Home</a></li>		
+    <li id="ViewBook"><a href="/viewbook/">viewbook</a></li>
+    <li id="Delete"><a href="/delete/">delete</a></li>
+{{q}}
+ {%endblock%}

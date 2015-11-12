@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+<meta charset="utf-8" /> 
+{% block content %}
+    <li id="Home"><a href="/index/">Home</a></li>		
+    <li id="ViewBook"><a href="/viewbook/">viewbook</a></li>
+    <li id="Delete"><a href="/delete/">delete</a></li>
+	<p>whitch one you want to delete </p>
+        <form action="/delete/" method="post">
+	{% csrf_token %}
+	<input type="text" name="delete" autofocus>
+	<input type="submit" value="delete">
+<p>{{ rlt }}</p> 
+    <table border="1" width="80%" >
+	<thead>
+	<tr>
+                <th>ISBN</th>
+		<th>Title</th>
+	<tr>
+	<thead>	
+	<tbody>
+		{% for Book in Book_list %}
+		<tr>
+  		<td>{{Book.ISBN }}</td>
+    		<td>{{Book.Title }}</td>
+		<tr>
+		{% endfor %}
+	<tbody>
+	<p>{{ erro }}</p> 
+{%endblock%}	

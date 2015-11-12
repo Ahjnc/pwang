@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+<meta charset="utf-8" /> 
+{% block content %}
+    <li id="Home"><a href="/index/">Home</a></li>		
+    <li id="ViewBook"><a href="/viewbook/">Viewbook</a></li>
+    <li id="Delete"><a href="/delete/">Delete</a></li>
+	<form action="/search/" method="post">
+	{% csrf_token %}
+	<input type="text" name="search" autofocus>
+	<input type="submit" value="search">
+<p>{{ rlt }}</p>
+    <table border="1" width="80%" >
+	<thead>
+	<tr>
+                <th>ISBN</th>
+		<th>Title</th>
+	<tr>
+	<thead>
+	<tbody>
+		 {% for Book in Book_list %}
+		<tr>
+  		<td>{{Book.ISBN }}</td>
+    		<td><a href="/detail/?id={{Book.Title }}">{{Book.Title }}</a></td> 
+		<tr>
+		{% endfor %}
+	<tbody>	
+ {%endblock%}

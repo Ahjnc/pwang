@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+<meta charset="utf-8" /> 
+{% block content %}
+	<form action="/search/" method="post">
+	{% csrf_token %}
+	<input type="text" name="search" autofocus>
+	<input type="submit" value="search">
+    <li id="Home"><a href="/index/">Home</a></li>		
+    <li id="ViewBook"><a href="/viewbook/">viewbook</a></li>
+    <li id="Delete"><a href="/delete/">delete</a></li>
+<p>{{ rlt }}</p>
+    <table border="1" width="80%" >
+	<thead>
+	<tr>
+                <th>ISBN</th>
+		<th>Title</th>
+	        <th>AuthorName</th>
+		<th>Publisher</th>
+		<th>PublishDate</th>
+                <th>Price</th>
+	<tr>
+	<thead>
+	<tbody>
+		 {% for Book in Book_list %}
+		<tr>
+  		<td>{{Book.ISBN }}</td>
+    		<td>{{Book.Title }}</td>
+		<td>{{Book.AuthorID }}</td>
+   		<td>{{Book.Publisher }}</td>
+    		<td>{{Book.PublishDate }}</td>  
+		<td>{{Book.Price }}</td> 
+		<tr>
+		{% endfor %}
+	<tbody>	
+	<p>{{ erro }}</p> 
+ {%endblock%}
